@@ -1,0 +1,19 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.gz
+*.png
+*.un~
+*.zip
+*~
+
+Resume/LICENSE
+Resume/README.md
+
+# ignore all folders that are not Resume or cover_letters
+*/
+!Resume
+!cover_letters
