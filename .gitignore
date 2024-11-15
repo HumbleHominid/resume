@@ -12,8 +12,3 @@
 
 Resume/LICENSE
 Resume/README.md
-
-# ignore all folders that are not Resume or cover_letters
-*/
-!Resume
-!cover_letters

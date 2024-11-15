@@ -1,8 +1,8 @@
-%-------------------------
+% ------------------------
 % Resume in Latex
 % Author : Sourabh Bajaj
 % License : MIT
-%------------------------
+% -----------------------
 
 \documentclass[letterpaper,11pt]{article}
 
@@ -22,6 +22,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% --------------
 % Adjust margins
 \addtolength{\oddsidemargin}{-0.375in}
 \addtolength{\evensidemargin}{-0.375in}
@@ -35,70 +36,74 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
+% -------------------
+% Sections Formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% ----
+% ----------
 % The macros
 \input{macros.tex}
 
-%-------------------------------------------
-
+% --------------
 \begin{document}
 
-%----------HEADING-----------------
-
+% -------
+% HEADING
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{\Large Michael Fryer} & Email: \href{mailto:michael.d.fryer@gmail.com}{michael.d.fryer@gmail.com}\\
-    746 Maryland St. & GitHub: \href{https://github.com/HumbleHominid}{https://github.com/HumbleHominid}\\
-    El Segundo, CA 90245 & Website: \href{http://mfryer.us}{http://mfryer.us}\\
+    228 Madden Lake Rd.\\
+    Rexford, MT 59930\\
     925-822-8764 & \\
 \end{tabular*}
 
-%-----------EDUCATION-----------------
+% -------
+% SUMMARY
+\section{Summary}
+\resumeSubHeadingListStart
+    \item[]\small{Michael Fryer is a seasoned full-stack developer. Graduating from Montana Tech in 2019 with degrees in Computer Science and Software Engineering, Michael has previously worked for Heavy Iron Studios where he was the lead UI programmer on Pac-Man: Mega Tunnel Battle. Michael was also the lead developer on the Developer and Live Operations portal for Pac-Man: Mega Tunnel Battle.}
+\resumeSubHeadingListEnd
+
+% ---------
+% EDUCATION
 \section{Education}
     \resumeSubHeadingListStart
         \education
             {Montana Tech}{Butte, MT}
             {Bachelors of Science in Computer Science with Game Development Option}{August 2015 - May 2019}
-            % {Bachelors of Science in Computer Science}{August 2015 - May 2019}
             {Bachelors of Science in Software Engineering}{August 2015 - May 2019}
     \resumeSubHeadingListEnd
 
-
-%-----------EXPERIENCE-----------------
+% ----------
+% EXPERIENCE
 \section{Experience}
     \resumeSubHeadingListStart
+        % \input{experience/content_creation.tex}
+        \input{experience/heavy_iron.tex}
         \input{experience/food_bank_contract.tex}
-        \input{experience/food_bank.tex}
-        \input{experience/ta_2019.tex}
         \input{experience/science_mine.tex}
-        \input{experience/ta_2017.tex}
   \resumeSubHeadingListEnd
 
-
-%-----------PROJECTS-----------------
+% --------
+% PROJECTS
 \section{Projects - Available on GitHub}
     \resumeSubHeadingListStart
-        \input{projects/ember-workshop.tex}
+        \input{projects/arcadia-tweet-bot.tex}
+        \input{projects/mfryer-nextjs.tex}
         \input{projects/entity-component-system.tex}
-        \input{projects/full-stack-app.tex}
-        \input{projects/meteor-typer.tex}
-        \input{projects/mfryer-site.tex}
+        \input{projects/pong.tex}
     \resumeSubHeadingListEnd
 
-%
-%--------PROGRAMMING SKILLS------------
+% ------------------
+% PROGRAMMING SKILLS
 \section{Programming Skills}
     \resumeSubHeadingListStart
         \resumeSubItem{Languages}
-            {Javascript, HTML, CSS, Python, C, C++, C\#, SQL, Java, XAML, SQL}
+            {C, C++, C\#, HTML, CSS, Typescript, SQL}
         \resumeSubItem{Technologies}
-            {Node, Emberjs, express, mochajs, LESS/SASS/SCSS, Browserify, NUnit, SSMS, MySql, SQL Server, MongoDb}
+            {NextJS, Django, Tailwind, AWS Cloudformation, AWS ECS, Git, Perforce, Latex, Adobe Premiere, Adobe Audition}
     \resumeSubHeadingListEnd
 
-
-%-------------------------------------------
+% ------------
 \end{document}
