@@ -16,6 +16,9 @@
 \usepackage[pdftex]{hyperref}
 \usepackage{fancyhdr}
 \setlength{\footskip}{5pt}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage{wrapfig}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -37,6 +40,7 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+
 % -------------------
 % Sections Formatting
 \titleformat{\section}{
@@ -52,19 +56,21 @@
 
 % -------
 % HEADING
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{\Large Michael Fryer} & \\
-    228 Madden Lake Rd. & Email: \href{mailto:michael.d.fryer@gmail.com}{michael.d.fryer@gmail.com}\\
-    Rexford, MT 59930 & Website: \href{https://www.mfryer.us}{https://mfryer.us}\\
-    +1-(925)-822-8764\\
-\end{tabular*}
-
-% -------
-% SUMMARY
-\section{Summary}
-\resumeSubHeadingListStart
-    \item[]\small{Michael Fryer is a seasoned full-stack developer. Graduating from Montana Tech in 2019 with Bachelors of Science in Computer Science and Software Engineering, Michael has previously worked for Heavy Iron Studios where he was the lead UI programmer on Pac-Man: Mega Tunnel Battle. Was also the lead developer on the Developer and Live Operations portal for Pac-Man: Mega Tunnel Battle.    Michael is currently working on a variety of projects involing bleeding-edge technologies such as NextJS and Tailwind.}
-\resumeSubHeadingListEnd
+% Image for Germany
+\begin{minipage}[m]{0.1\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{michael_bust}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.89\textwidth}
+% \begin{minipage}[t]{1\textwidth}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{\Large Michael Fryer} & \\
+        228 Madden Lake Rd. & Email: \href{mailto:michael.d.fryer@gmail.com}{michael.d.fryer@gmail.com}\\
+        Rexford, MT 59930 & Website: \href{https://www.mfryer.us}{https://mfryer.us}\\
+        +1-(925)-822-8764\\
+    \end{tabular*}
+\end{minipage}
 
 % ---------
 % EDUCATION
@@ -74,6 +80,23 @@
             {Montana Tech}{Butte, MT}
             {Bachelors of Science in Computer Science with Game Development Option}{August 2015 - May 2019}
             {Bachelors of Science in Software Engineering}{August 2015 - May 2019}
+    \resumeSubHeadingListEnd
+
+% -------
+% SUMMARY
+\section{Summary}
+\resumeSubHeadingListStart
+    \item[]\small{I am a seasoned full-stack developer of over five years. By leveraging NextJS, TailwindCSS, and PostgreSQL I am able to quickly create full-stack applications while targeting wide varieties of platforms with both reusability and scalability in mind.}
+\resumeSubHeadingListEnd
+
+% ------------------
+% SKILLS
+\section{Skills}
+    \resumeSubHeadingListStart
+        \resumeSubItem{Languages}
+            {HTML (5+ years), CSS (5+ years), Javascript (5+ years), Typescript (3+ years), SQL (5+ years), C++ (5+ years)}
+        \resumeSubItem{Technologies}
+            {NodeJS (5+ years), NextJS (1 year), React (3+ years), Django (1 years), Tailwind (1 year), AWS Cloudformation, AWS ECS, GCP, Azure, ElevenLabs, OpenAI, Git (5+ years), Perforce (2+ years), Latex, Adobe Premiere, Adobe Audition}
     \resumeSubHeadingListEnd
 
 % ----------
@@ -90,20 +113,11 @@
 % PROJECTS
 \section{Projects - Available on GitHub}
     \resumeSubHeadingListStart
+        \input{projects/arcadia-website.tex}
         \input{projects/mfryer-nextjs.tex}
-        \input{projects/arcadia-tweet-bot.tex}
+        % \input{projects/arcadia-tweet-bot.tex}
         % \input{projects/entity-component-system.tex}
         % \input{projects/pong.tex}
-    \resumeSubHeadingListEnd
-
-% ------------------
-% PROGRAMMING SKILLS
-\section{Programming Skills}
-    \resumeSubHeadingListStart
-        \resumeSubItem{Languages}
-            {C, C++, HTML, CSS, Typescript, SQL}
-        \resumeSubItem{Technologies}
-            {NextJS, Django, Tailwind, AWS Cloudformation, AWS ECS, Git, Perforce, Latex, Adobe Premiere, Adobe Audition}
     \resumeSubHeadingListEnd
 
 % ------------
