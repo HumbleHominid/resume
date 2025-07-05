@@ -1,124 +1,311 @@
-% ------------------------
-% Resume in Latex
-% Author : Sourabh Bajaj
-% License : MIT
-% -----------------------
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.7.2, 28 August 2024) written by LianTze Lim (liantze@gmail.com). Compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
 
-\documentclass[letterpaper,11pt]{article}
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
-\usepackage{fancyhdr}
-\setlength{\footskip}{5pt}
-\usepackage{graphicx}
-\graphicspath{{./images/}}
-\usepackage{wrapfig}
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+%% AltaCV uses the fontawesome5 and simpleicons packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
 
-% --------------
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.375in}
-\addtolength{\evensidemargin}{-0.375in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
 
-\urlstyle{same}
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+% WHEN COMPILING WITH XELATEX PLEASE USE
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex
+\iftutex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
 
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
 
 
-% -------------------
-% Sections Formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
 
-% ----------
-% The macros
-\input{macros.tex}
 
-% --------------
+% If your CV/résumé is in a language other than English,
+% then you probably want to change these so that when you
+% copy-paste from the PDF or run pdftotext, the location
+% and date marker icons for \cvevent will paste as correct
+% translations. For example Spanish:
+% \renewcommand{\locationname}{Ubicación}
+% \renewcommand{\datename}{Fecha}
+
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want to use an author-year reference style like APA(6)
+%% for your publication list
+% \input{pubs-authoryear.tex}
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want an originally numerical reference style like IEEE
+%% for your publication list
+\input{pubs-num.tex}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+% \usepackage{academicons}\let\faOrcid\aiOrcid
 \begin{document}
+\name{Michael Fryer}
+\tagline{Freelance Full Stack Developer}
+%% You can add multiple photos on the left or right
+\photoR{2.8cm}{images/michael_bust.jpg}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
 
-% -------
-% HEADING
-% Image for Germany
-\begin{minipage}[m]{0.1\textwidth}
-    \centering
-    \includegraphics[width=1\textwidth]{michael_bust}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.89\textwidth}
-% \begin{minipage}[t]{1\textwidth}
-    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-        \textbf{\Large Michael Fryer} & \\
-        228 Madden Lake Rd. & Email: \href{mailto:michael.d.fryer@gmail.com}{michael.d.fryer@gmail.com}\\
-        Rexford, MT 59930 & Website: \href{https://www.mfryer.us}{https://mfryer.us}\\
-        +1-(925)-822-8764\\
-    \end{tabular*}
-\end{minipage}
+\personalinfo{%
+  % Not all of these are required!
+  \email{michael.d.fryer@gmail.com}
+  \phone{+1-925-822-8764}
+  \mailaddress{228 Madden Lake Road}
+  \location{Montana, USA}
+  \homepage{mfryer.us}
+  % \twitter{@twitterhandle}
+  % \xtwitter{@x-handle}
+  \linkedin{michael-d-fryer}
+  \github{HumbleHominid}
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbitrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
 
-% ---------
-% EDUCATION
-\section{Education}
-    \resumeSubHeadingListStart
-        \education
-            {Montana Tech}{Butte, MT}
-            {Bachelors of Science in Computer Science with Game Development Option}{August 2015 - May 2019}
-            {Bachelors of Science in Software Engineering}{August 2015 - May 2019}
-    \resumeSubHeadingListEnd
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+  %%
+  %% For services and platforms like Mastodon where there isn't a
+  %% straightforward relation between the user ID/nickname and the hyperlink,
+  %% you can use \printinfo directly e.g.
+  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
+  %% But if you absolutely want to create new dedicated info fields for
+  %% such platforms, then use \NewInfoField* with a star:
+  % \NewInfoField*{mastodon}{\faMastodon}
+  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
+  %% the full hyperlink.
+  % \mastodon{@username@instance}{https://instance.url/@username}
+}
 
-% -------
-% SUMMARY
-\section{Summary}
-\resumeSubHeadingListStart
-    \item[]\small{I am a seasoned full-stack developer of over five years. By leveraging NextJS, TailwindCSS, and PostgreSQL I am able to quickly create full-stack applications while targeting wide varieties of platforms with both reusability and scalability in mind.}
-\resumeSubHeadingListEnd
+\makecvheader
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
 
-% ------------------
-% SKILLS
-\section{Skills}
-    \resumeSubHeadingListStart
-        \resumeSubItem{Languages}
-            {HTML (5+ years), CSS (5+ years), Javascript (5+ years), Typescript (3+ years), SQL (5+ years), C++ (5+ years)}
-        \resumeSubItem{Technologies}
-            {NodeJS (5+ years), NextJS (1 year), React (3+ years), Django (1 years), Tailwind (1 year), AWS Cloudformation, AWS ECS, GCP, Azure, ElevenLabs, OpenAI, Git (5+ years), Perforce (2+ years), Latex, Adobe Premiere, Adobe Audition}
-    \resumeSubHeadingListEnd
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
 
-% ----------
-% EXPERIENCE
-\section{Experience}
-    \resumeSubHeadingListStart
-        \input{experience/content_creation.tex}
-        \input{experience/heavy_iron.tex}
-        % \input{experience/food_bank_contract.tex}
-        \input{experience/science_mine.tex}
-  \resumeSubHeadingListEnd
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+\cvsection{Experience}
 
-% --------
-% PROJECTS
-\section{Projects - Available on GitHub}
-    \resumeSubHeadingListStart
-        \input{projects/arcadia-website.tex}
-        \input{projects/mfryer-nextjs.tex}
-        % \input{projects/arcadia-tweet-bot.tex}
-        % \input{projects/entity-component-system.tex}
-        % \input{projects/pong.tex}
-    \resumeSubHeadingListEnd
+\cvevent{Freelancer/Consultant}{}{Sprint 2022 -- Ongoing}{Rexford, MT}
+\begin{itemize}
+  \item Created a NextJS web application, \href{https://arcadia.yt}{arcadia.yt}, for ArcadiaSMP that leverages Google's YouTube api to aggregate video uploads from members increasing viewer engagement.
+  \item Leveraged cutting-edge AI technology such as ChatGPT,\\
+  ElevenLabs, and Azure TTS to create interactive content tools.
+\end{itemize}
 
-% ------------
+\divider
+
+\cvevent{Associate Game Programmer}{}{October 2019 -- July 2021}{Manhattan Beach, CA}
+\begin{itemize}
+  \item Worked closely with artists to make functional UI implementations based on art mock-ups.
+  \item Extended our use of Unreal's replication graph to better enhance our network performance.
+  \item Created engine patches to address unimplemented, or partially implemented, features of UE4 that were necessary for a full-game launch.
+  \item Project lead on the Developer and Live Operations portal built in Django to assist with the live-service of Pac-Man: Mega Tunnel Battle.
+\end{itemize}
+
+\cvsection{Projects}
+
+\cvevent{\href{https://github.com/HumbleHominid/arcadia-website}{Arcadia Website}}{}{}{}
+A NextJS application that leverages Google's YouTube api to aggregate video uploads from members of Arcadia.
+
+\divider
+
+\cvevent{\href{https://github.com/HumbleHominid/arcadia-tweet-bot}{Arcadia Socials Application}}{}{}{}
+A Python application that leverages YouTube's RSS feed and\\
+Google's YouTube api to aggregate video uploads from members of\\
+Arcadia and posts them to X (formerly Twitter).
+
+\medskip
+
+\cvsection{A Day of My Life}
+
+% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% \wheelchart{outer radius}{inner radius}{
+% comma-separated list of value/text width/color/detail}
+\wheelchart{1.5cm}{0.5cm}{%
+  6/8em/accent!30/{Sleep,\\beautiful sleep},
+  3/8em/accent!40/Content Creator by night,
+  8/8em/accent!60/Daytime job,
+  2/10em/accent/Exercise and\\relaxation,
+  5/6em/accent!20/Spending time with my girlfriend
+}
+
+% use ONLY \newpage if you want to force a page break for
+% ONLY the current column
+% \newpage
+
+% \cvsection{Publications}
+
+%% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
+%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+%% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
+% \mynames{Lim/Lian\bibnamedelima Tze,
+%   Wong/Lian\bibnamedelima Tze,
+%   Lim/Tracy,
+%   Lim/L.\bibnamedelimi T.}
+%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+
+% \nocite{*}
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+\cvsection{My Life Philosophy}
+
+\begin{quote}
+``Work hard so you can enjoys life's little pleasures.''
+\end{quote}
+
+\cvsection{Most Proud of}
+
+\cvachievement{\faHeartbeat}{Shipped Pac-Man}{Pac-Man: Mega Tunnel Battle was the first major release I completed as a team member.}
+
+\divider
+
+\cvachievement{\faTrophy}{Outstanding Achievement}{Awarded by the department of computer science at Montana Tech.}
+
+\divider
+
+\cvachievement{\faHeartbeat}{Twitch Affiliate}{Achieved Twitch Affiliate status.}
+
+\cvsection{Strengths}
+
+% Don't overuse these \cvtag boxes — they're just eye-candies and not essential. If something doesn't fit on a single line, it probably works better as part of an itemized list (probably inlined itemized list), or just as a comma-separated list of strengths.
+
+% The `ragged2e` document class option might cause automatic linebreaks between \cvtag to fail.
+% Either remove the ragged2e option; or
+% add \LaTeXraggedright in the paragraph for these \cvtag
+{\LaTeXraggedright
+\cvtag{Hard-working}
+\cvtag{Communicator}
+\cvtag{Eye for detail}
+\cvtag{Motivator \& Leader}
+\par}
+
+\divider\smallskip
+
+%% ...Or manually add linebreaks yourself
+\cvtag{NextJS}
+\cvtag{JavaScript}
+\cvtag{TypeScript}\\
+\cvtag{HTML}
+\cvtag{CSS}
+\cvtag{Git}
+\cvtag{C++}
+
+\cvsection{Languages}
+
+\cvskill{English}{5}
+% \divider
+
+% \cvskill{Spanish}{4}
+% \divider
+
+% \cvskill{German}{3.5} %% Supports X.5 values.
+
+%% Yeah I didn't spend too much time making all the
+%% spacing consistent... sorry. Use \smallskip, \medskip,
+%% \bigskip, \vspace etc to make adjustments.
+\medskip
+
+\cvsection{Education}
+
+\cvevent{B.Sc.\ in Computer Science}{Montana Tech}{August 2015 - May 2019}{}
+
+\divider
+
+\cvevent{B.Sc.\ in Software Engineering}{Montana Tech}{August 2015 - May 2019}{}
+
+% \divider
+
+% \cvevent{B.Sc.\ in Your Discipline}{Stanford University}{Sept 1998 -- June 2001}{}
+
+% \divider
+
+% \cvsection{Referees}
+
+% \cvref{name}{email}{mailing address}
+% \cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
+% {Address Line 1\\Address line 2}
+
+% \divider
+
+% \cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
+% {Address Line 1\\Address line 2}
+
+
+\end{paracol}
+
+
 \end{document}
