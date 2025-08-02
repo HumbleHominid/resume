@@ -378,7 +378,7 @@
       % Calculate the thickness and the middle line of the wheel
       \pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
       \pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
-      \pgfmathsetmacro{\totalrot}{-90 + #1}
+      \pgfmathsetmacro{\totalrot}{90 + #1}
 
       % Rotate so we start from the top
       \begin{scope}[rotate=\totalrot]
@@ -395,12 +395,12 @@
 
             % This is necessary for the labels to align nicely
             \pgfmathparse{
-               (-\midangle>180?"west":"east")
+               (-\midangle<180?"west":"east")
             } \edef\textanchor{\pgfmathresult}
             \pgfmathparse{
-               (-\midangle>180?"flush left":"flush right")
+               (-\midangle<180?"flush left":"flush right")
             } \edef\textalign{\pgfmathresult}
-            \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle<180)}
+            \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle>180)}
 
             % Draw the color segments. Somehow, the \midrow units got lost, so we add 'pt' at the end. Not nice...
             \filldraw[draw=white,fill=\colour] (-\cumnum:\outerradius) arc (-\cumnum:-(\newcumnum):\outerradius) --
@@ -408,7 +408,7 @@
 
             % Draw the data labels
             % v1.6: Use accsupp so that the numeric number is copied/pasted too
-            \draw  [*-,thin,emphasis] node [append after command={(\midangle:\midradius pt) -- (\midangle:\outerradius + 1ex) -- (\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [xshift=\labelshiftdir*0.5cm,inner sep=1ex, outer sep=0pt, text width=\width,anchor=\textanchor,align=\textalign,font=\small,text=body]{\BeginAccSupp{method=pdfstringdef,ActualText={\name: \value}}\name\EndAccSupp{}};
+            \draw  [*-,thin,emphasis] node [append after command={(\midangle:\midradius pt) -- (\midangle:\outerradius + 1ex) -- (\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [xshift=\labelshiftdir*0.5cm,inner sep=1ex, outer sep=0pt,anchor=\textanchor,align=\textalign,font=\small,text=body]{\BeginAccSupp{method=pdfstringdef,ActualText={\name: \value}}\name\EndAccSupp{}};
             % Set the old cumulated angle to the new value
             \global\let\cumnum=\newcumnum
         }
