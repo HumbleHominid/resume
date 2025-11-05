@@ -70,7 +70,7 @@
     \ifluatex\tutextrue\else\tutexfalse\fi
   \fi
 }{}
-\iftutex 
+\iftutex
   \RequirePackage{fontspec}
 \else
   %% v1.3.2 attempts to make ligatures
@@ -92,11 +92,11 @@
 
 % 1.7.3 For backward compatibility re hooks management
 \if@withhyper
-\IfFormatAtLeastTF{2020-10-01}{%
-  \AddToHook{begindocument/before}{\hypersetup{hidelinks}\urlstyle{same}}
-}{%
-  \AtBeginDocument{\hypersetup{hidelinks}\urlstyle{same}}
-}
+  \IfFormatAtLeastTF{2020-10-01}{%
+    \AddToHook{begindocument/before}{\hypersetup{hidelinks}\urlstyle{same}}
+  }{%
+    \AtBeginDocument{\hypersetup{hidelinks}\urlstyle{same}}
+  }
 \fi
 
 \colorlet{accent}{blue!70!black}
@@ -130,26 +130,26 @@
 \RequirePackage{changepage}
 
 \setlength{\parindent}{0pt}
-\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
+\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\smallskip}
 
 \newenvironment{fullwidth}{%
   \begin{adjustwidth}{}{\dimexpr-\marginparwidth-\marginparsep\relax}}
-  {\end{adjustwidth}}
+    {\end{adjustwidth}}
 
 %% v1.3.1 \detokenize will break UTF-8 in pdflatex
 %% Using alternative from https://tex.stackexchange.com/a/530911/226
 \newcommand{\utffriendlydetokenize}[1]{%
 \scantokens{%
-  \catcode`\_=12%
+\catcode`\_=12%
 %   \catcode`\^=12%
 %   \catcode`\{=12%
 %   \catcode`\}=12%
-  \catcode`\&=12%
-  \catcode`\$=12%
-  \catcode`\#=12%
-  \catcode`\~=12%
+\catcode`\&=12%
+\catcode`\$=12%
+\catcode`\#=12%
+\catcode`\~=12%
 %   \catcode`\\=12%
-  {#1}%
+{#1}%
 }%
 }
 %% v1.3: Incorporating hyperlinks
@@ -162,19 +162,19 @@
 \NewDocumentCommand{\printinfo}{m m o}{%
   \IfNoValueTF{#3}{%
     \mbox{\textcolor{accent}%
-    {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-    ~\utffriendlydetokenize{#2}\hspace{2em}}%
-  }{%
-     \if@withhyper%
-      \mbox{\textcolor{accent}%
       {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-      ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
-     \else%
-       \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
+      ~\utffriendlydetokenize{#2}\hspace{2em}}%
+  }{%
+    \if@withhyper%
+      \mbox{\textcolor{accent}%
+        {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
+        ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+    \else%
+      \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
       \mbox{\textcolor{accent}
       {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
       ~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
-     \fi%
+    \fi%
   }%
 }%
 
@@ -187,26 +187,26 @@
   }
   \csdef{#2 symbol}{#3}
   \IfBooleanTF{#1}
-    { \csdef{#2}##1##2{%
-        \if@withhyper
-          \IfNoValueTF {##2}
-            {\printinfo{\csuse{#2 symbol}}{##1}}%
-            {\printinfo{\csuse{#2 symbol}}{##1}[##2]}%
-        \else
-          \printinfo{\csuse{#2 symbol}}{##1}%
-        \fi%
-      }%
-    }
-    { \csdef{#2}##1{%
-        \if@withhyper
-          \IfNoValueTF {#4}
-            {\printinfo{\csuse{#2 symbol}}{##1}}%
-            {\printinfo{\csuse{#2 symbol}}{##1}[\csuse{#2 hyperprefix}##1]}%
-        \else
-          \printinfo{\csuse{#2 symbol}}{##1}%
-        \fi%
-      }%
-    }
+  { \csdef{#2}##1##2{%
+      \if@withhyper
+        \IfNoValueTF {##2}
+        {\printinfo{\csuse{#2 symbol}}{##1}}%
+        {\printinfo{\csuse{#2 symbol}}{##1}[##2]}%
+      \else
+        \printinfo{\csuse{#2 symbol}}{##1}%
+      \fi%
+    }%
+  }
+  { \csdef{#2}##1{%
+      \if@withhyper
+        \IfNoValueTF {#4}
+        {\printinfo{\csuse{#2 symbol}}{##1}}%
+        {\printinfo{\csuse{#2 symbol}}{##1}[\csuse{#2 hyperprefix}##1]}%
+      \else
+        \printinfo{\csuse{#2 symbol}}{##1}%
+      \fi%
+    }%
+  }
 }
 \ExplSyntaxOff
 
@@ -220,10 +220,10 @@
 \NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
 % v1.7.2 twitter.com is now X.com; v1.7.3 but only use the new icon if it's been defined
 \ifcsdef{simpleicon@xicon}
- {\NewInfoField{xtwitter}{\raisebox{-0.2ex}{\scalebox{0.95}{\simpleicon{x}}}\,}[https://x.com/]}
- {\let\xtwitter\twitter%
+{\NewInfoField{xtwitter}{\raisebox{-0.2ex}{\scalebox{0.95}{\simpleicon{x}}}\,}[https://x.com/]}
+{\let\xtwitter\twitter%
   \pretocmd{\xtwitter}{\ClassWarning{altacv}{You tried to use \string\xtwitter, but the new X icon isn't available. Please ensure you have updated the `simpleicons' package. Falling back to \string\twitter\space icon for now}}{}{}%
- }
+}
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
 % v1.7.3 Backward compatibility for ORCiD icon
@@ -288,26 +288,26 @@
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \altacv@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
+  \altacv@left@photos\hfill%
+  \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
     \raggedright%
     {\namefont\color{name}\MakeUppercase{\@name}\par}
     \medskip
     {\taglinefont\color{tagline}\@tagline\par}
     \medskip
     {\personalinfofont\@personalinfo\par}
-    \end{minipage}\hfill%
-    \altacv@right@photos\par%
+  \end{minipage}\hfill%
+  \altacv@right@photos\par%
   \endgroup\medskip
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
 \newcommand{\cvsection}[2][]{%
-  \nointerlineskip\bigskip%  %% bugfix in v1.6.2
-  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+\nointerlineskip\bigskip%  %% bugfix in v1.6.2
+\ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+{\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
+{\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
 }
 
 \newcommand{\cvsubsection}[1]{%
@@ -317,30 +317,63 @@
 
 % v1.1.4: fixes inconsistent font size
 % v1.7: adds accsupp ActualText for location and date markers
-\newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1\par}
+\newcommand{\cvevent}[5]{%
+  \vspace{-0.5\baselineskip}%
+  \noindent
+  \begin{minipage}[t]{0.6\linewidth}
+    \raggedright
+    {\large\color{emphasis}#1%
+      \ifstrequal{#5}{}{}{
+        {\small\color{accent}
+            \ |\
+            \textit{#5}
+          }}
+    }\par
+    \ifstrequal{#2}{}{}{
+      {\small\textbf{\color{accent}#2}}%
+    }%
+  \end{minipage}%
+  \begin{minipage}[t]{0.4\linewidth}
+    \raggedleft
+    \ifstrequal{#3}{}{}{
+      {\small
+          {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+            ~#3}%
+        }}\par
+    \ifstrequal{#4}{}{}{
+      {\small
+          {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
+            ~#4}%
+        }}%
+  \end{minipage}%
   \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-  \textbf{\color{accent}#2}\par
-  \smallskip}
-  \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
-      ~#3}%
-    }}%
-  \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
-        ~#4}%
-    }}\par
-  \medskip\normalsize
+
+  % {\Large\color{emphasis}#1}
+  % \smallskip\normalsize
+  % \ifstrequal{#2}{}{}{
+  %   \textbf{\color{accent}#2}\par
+  %   \smallskip}
+  % \ifstrequal{#3}{}{}{%
+  %   {\small\makebox[0.5\linewidth][l]%
+  %       {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+  %         ~#3}%
+  %     }}%
+  % \ifstrequal{#4}{}{}{%
+  %   {\small\makebox[0.5\linewidth][l]%
+  %       {
+  %         % align text to the right
+  %         \hfill
+  %         \BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
+  %         ~#4}%
+  %     }}\par
+  % \medskip\normalsize
 }
 
 % v1.7: adds accsupp for the icon as well
 \newcommand{\cvachievement}[3]{%
   \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}\BeginAccSupp{method=escape,ActualText={#1: }}#1\EndAccSupp{}} & \bfseries\textcolor{emphasis}{#2}\\
-  & #3
+    \multirow{2}{*}{\Large\color{accent}\BeginAccSupp{method=escape,ActualText={#1: }}#1\EndAccSupp{}} & \bfseries\textcolor{emphasis}{#2} \\
+                                                                                                       & #3
   \end{tabularx}%
   \smallskip
 }
@@ -352,80 +385,80 @@
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted
 %       and also support 0.5, 1.5, 2.5, 3.5, 4.5
 \newcommand{\cvskill}[2]{%
-  \textcolor{emphasis}{\textbf{#1}}\hfill
-  \BeginAccSupp{method=plain,ActualText={#2}}
-  \foreach \x in {1,...,5}{%
-    \ifdimequal{\x pt - #2 pt}{0.5pt}%
-    {\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\cvRatingMarker}%
-     \clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\cvRatingMarker}}
-    {\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\cvRatingMarker}%
-  }\EndAccSupp{}\par%
+\textcolor{emphasis}{\textbf{#1}}\hfill
+\BeginAccSupp{method=plain,ActualText={#2}}
+\foreach \x in {1,...,5}{%
+\ifdimequal{\x pt - #2 pt}{0.5pt}%
+{\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\cvRatingMarker}%
+\clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\cvRatingMarker}}
+{\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\cvRatingMarker}%
+}\EndAccSupp{}\par%
 }
 
 % Adapted from @Jake's answer at http://tex.stackexchange.com/a/82729/226
 \newcommand{\wheelchart}[4][0]{%
-    \begingroup\centering
-    \def\innerradius{#3}%
-    \def\outerradius{#2}%
-    % Calculate total
-    \pgfmathsetmacro{\totalnum}{0}%
-    \foreach \value/\colour/\name in {#4} {%
-        \pgfmathparse{\value+\totalnum}%
-        \global\let\totalnum=\pgfmathresult%
+  \begingroup\centering
+  \def\innerradius{#3}%
+  \def\outerradius{#2}%
+  % Calculate total
+  \pgfmathsetmacro{\totalnum}{0}%
+  \foreach \value/\colour/\name in {#4} {%
+      \pgfmathparse{\value+\totalnum}%
+      \global\let\totalnum=\pgfmathresult%
     }%
-    \begin{tikzpicture}
+  \begin{tikzpicture}
 
-      % Calculate the thickness and the middle line of the wheel
-      \pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
-      \pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
-      \pgfmathsetmacro{\totalrot}{90 + #1}
+    % Calculate the thickness and the middle line of the wheel
+    \pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
+    \pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
+    \pgfmathsetmacro{\totalrot}{90 + #1}
 
-      % Rotate so we start from the top
-      \begin{scope}[rotate=\totalrot]
+    % Rotate so we start from the top
+    \begin{scope}[rotate=\totalrot]
 
       % Loop through each value set. \cumnum keeps track of where we are in the wheel
       \pgfmathsetmacro{\cumnum}{0}
       \foreach \value/\width/\colour/\name in {#4} {
-            \pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
+          \pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
 
-            % Calculate the percent value
-            \pgfmathsetmacro{\percentage}{\value/\totalnum*100}
-            % Calculate the mid angle of the colour segments to place the labels
-            \pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
+          % Calculate the percent value
+          \pgfmathsetmacro{\percentage}{\value/\totalnum*100}
+          % Calculate the mid angle of the colour segments to place the labels
+          \pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
 
-            % This is necessary for the labels to align nicely
-            \pgfmathparse{
-               (-\midangle<180?"west":"east")
-            } \edef\textanchor{\pgfmathresult}
-            \pgfmathparse{
-               (-\midangle<180?"flush left":"flush right")
-            } \edef\textalign{\pgfmathresult}
-            \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle>180)}
+          % This is necessary for the labels to align nicely
+          \pgfmathparse{
+            (-\midangle<180?"west":"east")
+          } \edef\textanchor{\pgfmathresult}
+          \pgfmathparse{
+            (-\midangle<180?"flush left":"flush right")
+          } \edef\textalign{\pgfmathresult}
+          \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle>180)}
 
-            % Draw the color segments. Somehow, the \midrow units got lost, so we add 'pt' at the end. Not nice...
-            \filldraw[draw=white,fill=\colour] (-\cumnum:\outerradius) arc (-\cumnum:-(\newcumnum):\outerradius) --
-            (-\newcumnum:\innerradius) arc (-\newcumnum:-(\cumnum):\innerradius) -- cycle;
+          % Draw the color segments. Somehow, the \midrow units got lost, so we add 'pt' at the end. Not nice...
+          \filldraw[draw=white,fill=\colour] (-\cumnum:\outerradius) arc (-\cumnum:-(\newcumnum):\outerradius) --
+          (-\newcumnum:\innerradius) arc (-\newcumnum:-(\cumnum):\innerradius) -- cycle;
 
-            % Draw the data labels
-            % v1.6: Use accsupp so that the numeric number is copied/pasted too
-            \draw  [*-,thin,emphasis] node [append after command={(\midangle:\midradius pt) -- (\midangle:\outerradius + 1ex) -- (\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [xshift=\labelshiftdir*0.5cm,inner sep=1ex, outer sep=0pt,anchor=\textanchor,align=\textalign,font=\small,text=body]{\BeginAccSupp{method=pdfstringdef,ActualText={\name: \value}}\name\EndAccSupp{}};
-            % Set the old cumulated angle to the new value
-            \global\let\cumnum=\newcumnum
+          % Draw the data labels
+          % v1.6: Use accsupp so that the numeric number is copied/pasted too
+          \draw  [*-,thin,emphasis] node [append after command={(\midangle:\midradius pt) -- (\midangle:\outerradius + 1ex) -- (\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [xshift=\labelshiftdir*0.5cm,inner sep=1ex, outer sep=0pt,anchor=\textanchor,align=\textalign,font=\small,text=body]{\BeginAccSupp{method=pdfstringdef,ActualText={\name: \value}}\name\EndAccSupp{}};
+          % Set the old cumulated angle to the new value
+          \global\let\cumnum=\newcumnum
         }
-      \end{scope}
-%      \draw[gray] (0,0) circle (\outerradius) circle (\innerradius);
-    \end{tikzpicture}\par
-    \endgroup
+    \end{scope}
+    %      \draw[gray] (0,0) circle (\outerradius) circle (\innerradius);
+  \end{tikzpicture}\par
+  \endgroup
 }
 
 \newcommand{\cvref}[3]{%
   \smallskip
   \textcolor{emphasis}{\textbf{#1}}\par
   \begin{description}[font=\color{accent},style=multiline,leftmargin=1.35em,align=left]
-  \item[\small\normalfont\emailsymbol] #2
-  \item[\small\normalfont\mailaddresssymbol] #3
+    \item[\small\normalfont\emailsymbol] #2
+    \item[\small\normalfont\mailaddresssymbol] #3
   \end{description}
-%   \medskip
+  %   \medskip
 }
 
 \newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}
@@ -437,8 +470,8 @@
 % v1.1.2: make it easier to add a sidebar aligned with top of next page
 \RequirePackage{afterpage}
 \newcommand{\addsidebar}[2][]{\marginpar{%
-  \ifstrequal{#1}{}{}{\vspace*{#1}}%
-  \input{#2}}%
+    \ifstrequal{#1}{}{}{\vspace*{#1}}%
+    \input{#2}}%
 }
 \newcommand{\addnextpagesidebar}[2][]{\afterpage{\addsidebar[#1]{#2}}}
 
@@ -465,20 +498,20 @@
     \global\togglefalse{boldname}%
     \foreach \my@fname / \my@gname in \my@namelist {%
       \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
-                   and
-                   test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
-        {\global\toggletrue{boldname}\typeout{YES BOLD NAMES}}{}%
+        and
+        test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+      {\global\toggletrue{boldname}\typeout{YES BOLD NAMES}}{}%
     }%
     \iftoggle{boldname}{\textbf{##1}}{##1}%
   }%
-% 
+  % 
   \renewcommand*{\mkbibnamegiven}[1]{%
     \global\togglefalse{boldname}%
     \foreach \my@fname / \my@gname in \my@namelist{%
       \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
-                   and
-                   test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
-        {\global\toggletrue{boldname}\breakforeach}{}%
+        and
+        test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+      {\global\toggletrue{boldname}\breakforeach}{}%
     }%
     \iftoggle{boldname}{\textbf{##1}}{##1}%
   }

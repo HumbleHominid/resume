@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.7.2, 28 August 2024) written by LianTze Lim (liantze@gmail.com). Compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+%% AltaCV uses the fontawesome5 and simpleicons packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% For compilation
+\usepackage{bookmark}
+
+% Set the fonts
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+% \usepackage{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+\begin{document}
+\name{Michael Fryer}
+\tagline{Software Engineer \& Data Scientist | Master's Candidate}
+%% You can add multiple photos on the left or right
+\photoR{2.8cm}{src/images/bust_bg_blue}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+% Include local macro file
+\input{../macros.tex}
+
+\NewInfoField{workelegibility}{\faIdCard}[]
+\personalinfo{%
+  % Not all of these are required!
+  \workelegibility{Approved for Residence Permit in Germany}
+  \email{\MFemailvalue}
+  \phone{\MFcellphone}
+  \mailaddress{\MFstreet}
+  \location{\MFlocation}\\
+  \linkedin{michael-d-fryer}
+  \github{HumbleHominid}
+  \homepage{\MFdomain}
+
+
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+  %%
+  %% For services and platforms like Mastodon where there isn't a
+  %% straightforward relation between the user ID/nickname and the hyperlink,
+  %% you can use \printinfo directly e.g.
+  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
+  %% But if you absolutely want to create new dedicated info fields for
+  %% such platforms, then use \NewInfoField* with a star:
+  % \NewInfoField*{mastodon}{\faMastodon}
+  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
+  %% the full hyperlink.
+  % \mastodon{@username@instance}{https://instance.url/@username}
+}
+
+\makecvheader{}
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+%%%%%%%%%%%%%%%%%%%%%
+% Education History %
+%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Education}
+
+\cvevent{M.Sc.\ in Applied Data Science}{Frankfurt School of Finance \& Management}{September 2025---Present}{Frankfurt am Main, Germany}{}
+
+\divider{}
+
+\cvevent{B.Sc.\ in Software Engineering and B.Sc.\ Computer Science}{Montana Tech}{August 2015---May 2019}{Butte, MT, USA}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Work Experience Section %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Experience}
+\cvevent{Master's Candidate in Applied Data Science}{Frankfurt School of Finance \& Management}{September 2025---Present}{Frankfurt am Main, Germany}{}
+\begin{itemize}
+  \item Pursuing a Master's in Applied Data Science at Frankfurt School of Finance \& Management.
+\end{itemize}
+
+% \divider{}
+
+% \cvevent{Freelance Web Developer}{Self-Employed}{Spring 2022---Spring 2025}{Rexford, MT, USA}{}
+% \begin{itemize}
+%   \item Created a NextJS web application, \href{https://arcadia.yt}{arcadia.yt}, for ArcadiaSMP that leverages Google's YouTube api to aggregate video uploads from members increasing viewer engagement.
+%   \item Leveraged cutting-edge AI technology including ChatGPT, ElevenLabs, and Azure TTS to create interactive content tools.
+% \end{itemize}
+
+\divider{}
+
+\cvevent{Associate Game Programmer}{Heavy Iron Studios}{October 2019---July 2021}{Manhattan Beach, CA, USA}{}
+\begin{itemize}
+  \item Worked closely with artists to transform their UI mock-ups into a functional user experience.
+  \item Extended Unreal Engine's replication graph to meet our network performance requirements.
+  \item Created Unreal Engine patches that included necessary features for a full-game launch.
+  \item Implemented the Live Operations portal using Django to satisfy the business requirement of a live-service game.
+\end{itemize}
+
+\divider{}
+
+\cvevent{Software Engineer}{Butte Food Bank}{Fall 2018---August 2019}{Butte, MT, USA}{}
+\begin{itemize}
+  \item Created inventory and reporting software for the Butte Food Bank titled FRED.\
+  \item Developed the front-end application of FRED using WPF Forms.
+  \item Expanded reporting features to help the Food Bank meet government regulations.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%
+% Projects section %
+%%%%%%%%%%%%%%%%%%%%
+\cvsection{Projects}
+\cvevent{\href{https://github.com/HumbleHominid/arcadia-website}{Arcadia Website}}{}{}{}{NextJS, Vercel, Neon}
+A NextJS application that leverages Google's YouTube api to aggregate video uploads from members of Arcadia and post to social media.
+
+\divider{}
+
+% \cvevent{\href{https://github.com/HumbleHominid/arcadia-tweet-bot}{Arcadia Socials Application}}{}{}{}
+% A Python application that leverages YouTube's RSS feed and\\
+% Google's YouTube api to aggregate video uploads from members of\\
+% Arcadia and posts them to X (formerly Twitter).
+
+\cvevent{\href{https://github.com/HumbleHominid/mfryer-nextjs}{Personal Website}}{}{}{}{NextJS, Vercel}
+My personal website which contains contact information and public information about myself. Built with NextJS, this project doubles as a living CV and portfolio.
+
+\medskip
+\begin{paracol}{2}
+  %%%%%%%%%%%%%%%%%%%%
+  % Soft/Hard Skills %
+  %%%%%%%%%%%%%%%%%%%%
+  \cvsection{Strengths}
+
+  % Languages
+  \cvtag{Python}
+  \cvtag{TypeScript}
+  \cvtag{C/C++}
+  \cvtag{HTML/CSS}
+  % Frameworks
+  \cvtag{NextJS}
+  % Developer Tools
+  \cvtag{Git}
+  \cvtag{VS Code}
+  \cvtag{Visual Studio}
+  % Libraries 
+  \cvtag{Pandas}
+  \cvtag{NumPy}
+  \cvtag{Matplotlib}
+
+  \divider\smallskip
+
+  \cvtag{Communication}
+  \cvtag{Organization}
+  \cvtag{Problem Solving}\\
+  \cvtag{Attention to Detail}
+  \cvtag{Motivation \& Leadership}
+
+  % \cvtag{Python}
+  % \cvtag{Data Analysis}
+  % \cvtag{NextJS}
+  % \cvtag{TypeScript}
+  % \cvtag{HTML}
+  % \cvtag{CSS}
+  % \cvtag{C++}
+  % \cvtag{Git}
+
+  % \divider\smallskip
+
+  % \cvtag{Organizational Skills}
+  % \cvtag{Communication}
+  % \cvtag{Attention to Detail}
+  % \cvtag{Motivator \& Leader}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%
+  % Language Proficiency %
+  %%%%%%%%%%%%%%%%%%%%%%%%
+  \cvsection{Languages}
+
+  \cvskill{English --- Native}{5}
+  \cvskill{German --- A1}{1}
+
+  \switchcolumn{}
+
+  %%%%%%%%%%%%%%%%
+  % Achievements %
+  %%%%%%%%%%%%%%%%
+  \cvsection{Most Proud of}
+
+  \cvachievement{\faGhost}{Pac-Man: Mega Tunnel Battle}{Shipped my first major software release of my career with my team.}
+
+  \divider{}
+
+  \cvachievement{\faCubes}{Arcadia Website}{Created \href{https://arcadia.yt}{arcadia.yt} as a hobby project for my community.}
+
+  \divider{}
+
+  \cvachievement{\faTrophy}{Outstanding Achievement}{Awarded by the department of computer science at Montana Tech.}
+\end{paracol}
+
+%%%%%%%%%
+% Wheel %
+%%%%%%%%%
+% \cvsection{A Day of My Life}
+
+% % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% % \wheelchart{outer radius}{inner radius}{
+% % comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   5/8em/accent!70/Studying,
+%   2/8em/accent!40/Cooking,
+%   8/8em/accent!20/Recharging,
+%   3/8em/accent!40/Exercise and\\relaxation,
+%   9/8em/accent/Attending\\Classes
+% }
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+% \switchcolumn{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personal Quote/Philosophy %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \cvsection{My Life Philosophy}
+
+% \begin{quote}
+%   ``There is a model for everything.'' % chktex 38
+% \end{quote}
+
+\end{document}
