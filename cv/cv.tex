@@ -51,8 +51,8 @@
 % Change some fonts, if necessary
 \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
 \renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
-\renewcommand{\cvsubsectionfont}{\large\bfseries}
+\renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\bfseries}
 
 % Change the bullets for itemize and rating marker
 % for \cvskill if you want to
@@ -73,13 +73,14 @@
 \input{../macros.tex}
 
 \NewInfoField{workelegibility}{\faIdCard}[]
+\NewInfoField{languages}{\faLanguage}[]
 \personalinfo{%
   % Not all of these are required!
-  \workelegibility{Residence Permit in Germany}
   \email{\MFemailvalue}
   \phone{\MFcellphone}
-  \mailaddress{\MFstreet}
-  \location{\MFlocation}\\
+  \location{\MFcity}
+  \workelegibility{Residence Permit in Germany}
+  \languages{English (Native) \textbar{} German (A2)}\\
   \linkedin{michael-d-fryer}
   \github{HumbleHominid}
   \homepage{\MFdomain}
@@ -104,7 +105,7 @@
 
 \makecvheader{}
 %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-\AtBeginEnvironment{itemize}{\small}
+\AtBeginEnvironment{itemize}{\footnotesize}
 
 %% Set the left/right column width ratio to 6:4.
 \columnratio{0.6}
@@ -190,17 +191,19 @@ Software engineer transitioning into data science, currently pursuing an M.Sc.\ 
 % Projects section %
 %%%%%%%%%%%%%%%%%%%%
 \cvsection{Projects}
+\cvevent{\href{https://github.com/HumbleHominid/urban-mobility-risk-analysis}{Urban Mobility Risk Analysis}}{}{}{}{Python, Pandas, DBSCAN, Contextily}
+{\small Applied DBSCAN clustering to a geospatial traffic accident dataset for Frankfurt am Main to identify and rank high-risk zones.
+Visualized results as choropleth maps using Contextily and Pandas for exploratory data analysis and stakeholder reporting.}
+
+\divider{}
+
 \cvevent{\href{https://github.com/HumbleHominid/arcadia-website}{Arcadia Website}}{}{}{}{NextJS, Vercel, Neon}
-A NextJS application that leverages Google's YouTube API to aggregate video uploads from members of Arcadia and post to social media.
+{\small A NextJS application that leverages Google's YouTube API to aggregate video uploads from members of Arcadia and post to social media.}
 
 \divider{}
 
 % \cvevent{\href{https://github.com/HumbleHominid/mfryer-nextjs}{Personal Website}}{}{}{}{NextJS, Vercel}
 % My personal website which contains contact information and public information about myself. Built with NextJS, this project doubles as a living CV and portfolio.
-
-\cvevent{\href{https://github.com/HumbleHominid/urban-mobility-risk-analysis}{Urban Mobility Risk Analysis}}{}{}{}{Python, Pandas, Contextily, DBSCAN}
-Applied DBSCAN clustering to a geospatial traffic accident dataset for Frankfurt am Main to identify and rank high-risk zones.
-Visualized results as choropleth maps using Contextily and Pandas for exploratory data analysis and stakeholder reporting.
 
 \medskip
 % \begin{paracol}{2}
@@ -241,10 +244,10 @@ Visualized results as choropleth maps using Contextily and Pandas for explorator
   %%%%%%%%%%%%%%%%%%%%%%%%
   % Language Proficiency %
   %%%%%%%%%%%%%%%%%%%%%%%%
-  \cvsection{Languages}
+  % \cvsection{Languages}
 
-  \cvskill{English\textnormal{\small{\ --- Native}}}{5}
-  \cvskill{German\textnormal{\small{\ --- Taking Courses --- A2}}}{1.5}
+  % \cvskill{English\textnormal{\small{\ --- Native}}}{5}
+  % \cvskill{German\textnormal{\small{\ --- Taking Courses --- A2}}}{1.5}
 
   % \switchcolumn{}
 
