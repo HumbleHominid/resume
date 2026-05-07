@@ -320,7 +320,7 @@
 \newcommand{\cvevent}[5]{%
   \vspace{-0.5\baselineskip}%
   \noindent
-  \begin{minipage}[t]{0.6\linewidth}
+  \begin{minipage}[t]{0.7\linewidth}
     \raggedright
     {\large\color{emphasis}#1%
       \ifstrequal{#5}{}{}{
@@ -333,7 +333,7 @@
       {\small\textbf{\color{accent}#2}}%
     }%
   \end{minipage}%
-  \begin{minipage}[t]{0.4\linewidth}
+  \begin{minipage}[t]{0.3\linewidth}
     \raggedleft
     \ifstrequal{#3}{}{}{
       {\small
