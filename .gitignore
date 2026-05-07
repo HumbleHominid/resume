@@ -1,6 +1,9 @@
-*log
-*out
-*gz
-*zip
-*xmpi
+# Mac
 .DS_Store
+# Build Flies
+**/*.log
+**/*.out
+**/*.gz
+**/*.zip
+**/*.xmpi
+**/*.aux
