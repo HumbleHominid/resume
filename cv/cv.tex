@@ -33,7 +33,7 @@
 % \usepackage{sourcesanspro}
 \renewcommand{\familydefault}{\sfdefault}
 
-% Change the colours if you want to
+% Change the colors if you want to
 \definecolor{SlateGrey}{HTML}{2E2E2E}
 \definecolor{LightGrey}{HTML}{666666}
 \definecolor{DarkPastelRed}{HTML}{450808}
@@ -68,14 +68,16 @@
 % Defaults below are the standard CV. Per-application overrides go in
 % applications/<name>/cv_options.tex (\toggletrue/\togglefalse, \renewcommand),
 % picked up by `make APP=<name>`.
+% Exactly two proj-* toggles may be on at once.
 \newtoggle{exp-fs-ta}            % ML Teaching Assistant, Frankfurt School
 \newtoggle{exp-career-break}     % Career break 2021--2025
 \newtoggle{exp-heavy-iron}       \toggletrue{exp-heavy-iron}
 \newtoggle{exp-food-bank}        \toggletrue{exp-food-bank}
 \newtoggle{exp-montana-tech-ta}  % CS TA, Montana Tech
 \newtoggle{proj-accidents}       \toggletrue{proj-accidents}
-\newtoggle{proj-arcadia}         \toggletrue{proj-arcadia}
-\newtoggle{proj-website}         % Personal website
+\newtoggle{proj-arcadia}         % Arcadia Website
+\newtoggle{proj-website}         \toggletrue{proj-website}
+\newtoggle{proj-battleship}      % battleship_rl (RL + cloud deployment)
 \newtoggle{sec-achievements}     % "Most Proud of" section
 
 \newcommand{\cvtaglinetext}{Data Scientist \& Software Engineer | M.Sc.\ Applied Data Science Candidate}
@@ -132,7 +134,7 @@
 \cvsection{Education}
 
 \cvevent{M.Sc.\ in Applied Data Science}{Frankfurt School of Finance \& Management}{September 2025---Present}{Frankfurt am Main, Germany}{}
-{\small Expected graduation: Summer 2027 \textbar{} Relevant coursework: Machine Learning, Statistical Modeling, Data Engineering}
+{\small Expected graduation: Summer 2027 \textbar{} Relevant coursework: Machine Learning 1 \& 2, Deep Learning, NLP, Computational Statistics \& Probability, Databases \& Cloud Computing}
 
 \divider{}
 
@@ -154,7 +156,7 @@
 \cvevent{Machine Learning Teaching Assistant}{Frankfurt School of Finance \& Management}{January 2026---Present}{Frankfurt am Main, Germany}{}
 \begin{itemize}
   \item Designed supplementary exercises for a bachelor-level Machine Learning course covering supervised learning, neural networks, and model evaluation.
-  \item Supported students with Python-based ML implementations, debugging model pipelines and explaining statistical concepts during weekly office hours.
+  \item Lead in-class exercises and present assignment solutions, answering student questions on course material as they arise.
 \end{itemize}
 }{}
 
@@ -187,9 +189,9 @@
 
 \cvevent{Software Engineer}{Butte Food Bank}{September 2018---August 2019}{Butte, MT, USA}{}
 \begin{itemize}
-  \item Designed and developed FRED, a full-stack inventory and reporting system that streamlined operations for the Butte Food Bank.
+  \item Co-developed FRED in a three-person team, a full-stack inventory and reporting system that streamlined operations for the Butte Food Bank.
   \item Developed the front-end application of FRED using WPF Forms.
-  \item Expanded reporting features to help the Food Bank meet government regulations.
+  \item As sole contractor after graduation, expanded reporting features to help the Food Bank meet government regulations.
 \end{itemize}
 }{}
 
@@ -199,7 +201,7 @@
 \cvevent{Computer Science TA}{Montana Tech}{Fall 2017---Spring 2019}{Butte, MT, USA}{}
 \begin{itemize}
   \item Assisted professors in grading assignments and exams for introductory computer science courses.
-  \item Held weekly office hours to help students with course material and programming assignments.
+  \item Held weekly office hours for intro programming (Java) and data structures and algorithms (C++, Unix), helping students with course material and assignments.
 \end{itemize}
 }{}
 
@@ -227,11 +229,18 @@ Visualized results using Streamlit and Contextily for stakeholder reporting.}
 {\small A NextJS application that leverages Google's YouTube API to aggregate video uploads from members of Arcadia and post to social media.}
 }{}
 
+\iftoggle{proj-battleship}{
+\projdivider
+
+\cvevent{\href{https://github.com/HumbleHominid/battleship_rl}{Battleship RL}}{}{}{}{Python, PyTorch, FastAPI, Docker, GCP}
+{\small Team project: reinforcement learning agents for Battleship, including a DQN trained in a custom environment alongside hunt-and-target and Bayesian baselines. Served through FastAPI with a WebSocket web UI, containerized with Docker, and deployed to Google Cloud Run via GitHub Actions and Terraform.}
+}{}
+
 \iftoggle{proj-website}{
 \projdivider
 
-\cvevent{\href{https://github.com/HumbleHominid/mfryer-nextjs}{Personal Website}}{}{}{}{NextJS, Vercel}
-{\small My personal website which contains contact information and public information about myself. Built with NextJS, this project doubles as a living CV and portfolio.}
+\cvevent{\href{https://github.com/HumbleHominid/mfryer-nextjs}{Personal Website}}{}{}{}{NextJS, TypeScript, Vercel}
+{\small My personal website, doubling as a living CV and portfolio. Includes an ML playground with a neural network handmade in TypeScript, without libraries, that trains live in the browser.}
 }{}
 
 \medskip
@@ -245,19 +254,18 @@ Visualized results using Streamlit and Contextily for stakeholder reporting.}
   \cvtag{Neural Networks}
   \cvtag{Feature Engineering}
   \cvtag{Data Analysis}
-  \cvtag{Statistical Analysis}
+  \cvtag{Statistical Analysis}\\
   \cvtag{Data Visualization}
   \cvtag{EDA}
   \cvtag{Python}
   \cvtag{PyTorch}
-  \cvtag{TensorFlow}
   \cvtag{Scikit-learn}
   \cvtag{Pandas}
   \cvtag{NumPy}
-  \cvtag{SciPy}
+  \cvtag{SciPy}\\
   \cvtag{SQL}
-  \cvtag{Altair}
-  \cvtag{Jupyter}\\
+  \cvtag{Plotly}
+  \cvtag{Jupyter}
   \cvtag{Claude Code}
   \cvtag{AWS}
   \cvtag{Docker}
@@ -277,8 +285,8 @@ Visualized results using Streamlit and Contextily for stakeholder reporting.}
   %% ATS Keywords (plain-text mirror of tags above for parser compatibility):
   %% Machine Learning, Deep Learning, Neural Networks, Feature Engineering,
   %% Data Analysis, Statistical Analysis, Statistics, Data Visualization, EDA,
-  %% Python, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, SciPy, SQL,
-  %% Altair, Jupyter, Claude Code, AWS, Docker, Linux/Bash, Git, TypeScript, C/C++,
+  %% Python, PyTorch, Scikit-learn, Pandas, NumPy, SciPy, SQL,
+  %% Plotly, Jupyter, Claude Code, AWS, Docker, Linux/Bash, Git, TypeScript, C/C++,
   %% Analytical Thinking, Problem Solving, Attention to Detail, Communication, Collaboration
 
 
