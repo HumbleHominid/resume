@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%
+% This is a sample CV template created using altacv.cls
+% (v1.7.2, 28 August 2024) written by LianTze Lim (liantze@gmail.com). Compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+%% AltaCV uses the fontawesome5 and simpleicons packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
+
+% Change the page layout if you need to
+\geometry{left=1cm,right=1cm,top=1.25cm,bottom=1.25cm,columnsep=1cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% For compilation
+\usepackage{bookmark}
+
+% Set the fonts
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+% \usepackage{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+%%%%%%%%%%%%%
+% Tailoring %
+%%%%%%%%%%%%%
+% Defaults below are the standard CV. Per-application overrides go in
+% applications/<name>/cv_options.tex (\toggletrue/\togglefalse, \renewcommand),
+% picked up by `make APP=<name>`.
+\newtoggle{exp-fs-ta}            % ML Teaching Assistant, Frankfurt School
+\newtoggle{exp-career-break}     % Career break 2021--2025
+\newtoggle{exp-heavy-iron}       \toggletrue{exp-heavy-iron}
+\newtoggle{exp-food-bank}        \toggletrue{exp-food-bank}
+\newtoggle{exp-montana-tech-ta}  % CS TA, Montana Tech
+\newtoggle{proj-accidents}       \toggletrue{proj-accidents}
+\newtoggle{proj-arcadia}         \toggletrue{proj-arcadia}
+\newtoggle{proj-website}         % Personal website
+\newtoggle{sec-achievements}     % "Most Proud of" section
+
+\newcommand{\cvtaglinetext}{Data Scientist \& Software Engineer | M.Sc.\ Applied Data Science Candidate}
+\newcommand{\cvsummarytext}{Software engineer transitioning into data science, currently pursuing an M.Sc.\ in Applied Data Science at Frankfurt School of Finance \& Management. Experienced in Python-based machine learning, statistical analysis, and data visualization, with a professional background in full-stack software development. Seeking to apply analytical and engineering skills to data-driven roles in industry.}
+
+% \app is set by `make APP=<name>`; unset builds the standard CV.
+\ifx\app\undefined\def\app{}\fi
+\IfFileExists{../applications/\app/cv_options.tex}{\input{../applications/\app/cv_options.tex}}{}
+
+\begin{document}
+\name{Michael Fryer}
+\tagline{\cvtaglinetext}
+%% You can add multiple photos on the left or right
+\photoR{2.8cm}{img/bust_bg_blue}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+% Include local macro file
+\input{../macros.tex}
+
+\NewInfoField{workelegibility}{\faIdCard}[]
+\NewInfoField{languages}{\faLanguage}[]
+\personalinfo{%
+  % Not all of these are required!
+  \email{\MFemailvalue}
+  % \phone{\MFcellphone}
+  \location{\MFcity}\\
+  \workelegibility{Aufenthaltstitel Holder}
+  \languages{English (Native) \textbar{} German (A2)}\\
+  \linkedin{michael-d-fryer}
+  \github{HumbleHominid}
+  \homepage{\MFdomain}
+}
+
+\makecvheader{}
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\footnotesize}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+%%%%%%%%%
+% Profile %
+%%%%%%%%%
+\cvsection{Summary}
+{\small\itshape
+\cvsummarytext
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Education History %
+%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Education}
+
+\cvevent{M.Sc.\ in Applied Data Science}{Frankfurt School of Finance \& Management}{September 2025---Present}{Frankfurt am Main, Germany}{}
+{\small Expected graduation: Summer 2027 \textbar{} Relevant coursework: Machine Learning, Statistical Modeling, Data Engineering}
+
+\divider{}
+
+\cvevent{B.Sc.\ in Software Engineering and B.Sc.\ in Computer Science}{Montana Tech}{August 2015---May 2019}{Butte, MT, USA}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Work Experience Section %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Experience}
+
+\cvevent{Quantitative Analyst - Intern}{Deutsche Börse Group}{August 2026---Present}{Eschborn, Germany}{}
+\begin{itemize}
+  \item Developing novel business solutions for the Market Data and Services division, focusing on speed and reliability of data delivery to clients.
+\end{itemize}
+
+\iftoggle{exp-fs-ta}{
+\divider{}
+
+\cvevent{Machine Learning Teaching Assistant}{Frankfurt School of Finance \& Management}{January 2026---Present}{Frankfurt am Main, Germany}{}
+\begin{itemize}
+  \item Designed supplementary exercises for a bachelor-level Machine Learning course covering supervised learning, neural networks, and model evaluation.
+  \item Supported students with Python-based ML implementations, debugging model pipelines and explaining statistical concepts during weekly office hours.
+\end{itemize}
+}{}
+
+\iftoggle{exp-career-break}{
+\divider{}
+
+\cvevent{Career Break}{}{August 2021---August 2025}{}{}
+{\small Took a planned career break after Heavy Iron Studios to pursue independent projects and transition into data science.}
+\begin{itemize}
+  \item Built and deployed web applications for my content creation work, including the Arcadia site that aggregates and distributes video content for a creator collective.
+  \item Collaborated with a team on regular content production.
+  \item Completed self-directed study in Python, statistics, and machine learning, leading to my acceptance to the M.Sc.\ in Applied Data Science at Frankfurt School of Finance \& Management.
+\end{itemize}
+}{}
+
+\iftoggle{exp-heavy-iron}{
+\divider{}
+
+\cvevent{Associate Game Programmer}{Heavy Iron Studios}{October 2019---July 2021}{Manhattan Beach, CA, USA}{}
+\begin{itemize}
+  \item Worked closely with artists to transform their UI mock-ups into a functional user experience.
+  \item Extended Unreal Engine's replication graph to meet our network performance requirements.
+  \item Shipped production-ready features across multiple Unreal Engine 4 patch releases in preparation for a full commercial game launch.
+  \item Built and deployed the Live Operations portal using Django and AWS, enabling real-time content management for a live-service title post-launch.
+\end{itemize}
+}{}
+
+\iftoggle{exp-food-bank}{
+\divider{}
+
+\cvevent{Software Engineer}{Butte Food Bank}{September 2018---August 2019}{Butte, MT, USA}{}
+\begin{itemize}
+  \item Designed and developed FRED, a full-stack inventory and reporting system that streamlined operations for the Butte Food Bank.
+  \item Developed the front-end application of FRED using WPF Forms.
+  \item Expanded reporting features to help the Food Bank meet government regulations.
+\end{itemize}
+}{}
+
+\iftoggle{exp-montana-tech-ta}{
+\divider{}
+
+\cvevent{Computer Science TA}{Montana Tech}{Fall 2017---Spring 2019}{Butte, MT, USA}{}
+\begin{itemize}
+  \item Assisted professors in grading assignments and exams for introductory computer science courses.
+  \item Held weekly office hours to help students with course material and programming assignments.
+\end{itemize}
+}{}
+
+
+%%%%%%%%%%%%%%%%%%%%
+% Projects section %
+%%%%%%%%%%%%%%%%%%%%
+\cvsection{Projects}
+% First visible project gets no leading divider.
+\newtoggle{proj-first}\toggletrue{proj-first}
+\newcommand{\projdivider}{\iftoggle{proj-first}{\togglefalse{proj-first}}{\divider{}}}
+
+\iftoggle{proj-accidents}{
+\projdivider
+
+\cvevent{\href{https://frankfurt-accident-hotspots.streamlit.app/}{Urban Mobility Risk Analysis}}{}{}{}{Python, Pandas, DBSCAN, Streamlit}
+{\small Applied DBSCAN clustering to a geospatial traffic accident dataset for Frankfurt am Main to identify and rank high-risk zones.
+Visualized results using Streamlit and Contextily for stakeholder reporting.}
+}{}
+
+\iftoggle{proj-arcadia}{
+\projdivider
+
+\cvevent{\href{https://github.com/HumbleHominid/arcadia-website}{Arcadia Website}}{}{}{}{NextJS, Vercel, Neon}
+{\small A NextJS application that leverages Google's YouTube API to aggregate video uploads from members of Arcadia and post to social media.}
+}{}
+
+\iftoggle{proj-website}{
+\projdivider
+
+\cvevent{\href{https://github.com/HumbleHominid/mfryer-nextjs}{Personal Website}}{}{}{}{NextJS, Vercel}
+{\small My personal website which contains contact information and public information about myself. Built with NextJS, this project doubles as a living CV and portfolio.}
+}{}
+
+\medskip
+  %%%%%%%%%%%%%%%%%%%%
+  % Soft/Hard Skills %
+  %%%%%%%%%%%%%%%%%%%%
+  \cvsection{Technical Skills}
+
+  \cvtag{Machine Learning}
+  % \cvtag{Deep Learning}
+  \cvtag{Neural Networks}
+  \cvtag{Feature Engineering}
+  \cvtag{Data Analysis}
+  \cvtag{Statistical Analysis}
+  \cvtag{Data Visualization}
+  \cvtag{EDA}
+  \cvtag{Python}
+  \cvtag{PyTorch}
+  \cvtag{TensorFlow}
+  \cvtag{Scikit-learn}
+  \cvtag{Pandas}
+  \cvtag{NumPy}
+  \cvtag{SciPy}
+  \cvtag{SQL}
+  \cvtag{Altair}
+  \cvtag{Jupyter}\\
+  \cvtag{Claude Code}
+  \cvtag{AWS}
+  \cvtag{Docker}
+  \cvtag{Linux/Bash}
+  \cvtag{Git}
+  \cvtag{TypeScript}
+  \cvtag{C/C++}
+
+  \divider\smallskip
+
+  \cvtag{Analytical Thinking}
+  \cvtag{Problem Solving}
+  \cvtag{Attention to Detail}
+  \cvtag{Communication}
+  \cvtag{Collaboration}
+
+  %% ATS Keywords (plain-text mirror of tags above for parser compatibility):
+  %% Machine Learning, Deep Learning, Neural Networks, Feature Engineering,
+  %% Data Analysis, Statistical Analysis, Statistics, Data Visualization, EDA,
+  %% Python, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, SciPy, SQL,
+  %% Altair, Jupyter, Claude Code, AWS, Docker, Linux/Bash, Git, TypeScript, C/C++,
+  %% Analytical Thinking, Problem Solving, Attention to Detail, Communication, Collaboration
+
+
+  %%%%%%%%%%%%%%%%
+  % Achievements %
+  %%%%%%%%%%%%%%%%
+  \iftoggle{sec-achievements}{
+  \cvsection{Most Proud of}
+
+  \cvachievement{\faGhost}{Pac-Man: Mega Tunnel Battle}{Shipped my first major software release of my career with my team.}
+
+  \divider{}
+
+  \cvachievement{\faCubes}{Arcadia Website}{Created \href{https://arcadia.yt}{arcadia.yt} as a hobby project for my community.}
+
+  \divider{}
+
+  \cvachievement{\faTrophy}{Outstanding Achievement}{Awarded by the department of computer science at Montana Tech.}
+  }{}
+
+\end{document}

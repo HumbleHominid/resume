@@ -1,0 +1,16 @@
+# Mac
+.DS_Store
+# Build Files
+**/*.log
+**/*.out
+**/*.gz
+**/*.zip
+**/*.xmpi
+**/*.aux
+
+# Per-application material (letters, CV overrides, tailored PDFs) stays local
+applications/
+
+# Private: personal details and anything printing them
+details.tex
+cover_letters/cover_letter.pdf
