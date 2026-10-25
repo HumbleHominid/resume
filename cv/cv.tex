@@ -76,8 +76,9 @@
 \newtoggle{exp-montana-tech-ta}  % CS TA, Montana Tech
 \newtoggle{proj-accidents}       \toggletrue{proj-accidents}
 \newtoggle{proj-arcadia}         % Arcadia Website
-\newtoggle{proj-website}         \toggletrue{proj-website}
+\newtoggle{proj-website}         % Personal Website
 \newtoggle{proj-battleship}      % battleship_rl (RL + cloud deployment)
+\newtoggle{proj-agentic}         \toggletrue{proj-agentic}  % Agentic Connections (LLM agent red-teaming)
 \newtoggle{sec-achievements}     % "Most Proud of" section
 
 \newcommand{\cvtaglinetext}{Data Scientist \& Software Engineer | M.Sc.\ Applied Data Science Candidate}
@@ -214,12 +215,20 @@
 \newtoggle{proj-first}\toggletrue{proj-first}
 \newcommand{\projdivider}{\iftoggle{proj-first}{\togglefalse{proj-first}}{\divider{}}}
 
+
 \iftoggle{proj-accidents}{
 \projdivider
 
 \cvevent{\href{https://frankfurt-accident-hotspots.streamlit.app/}{Urban Mobility Risk Analysis}}{}{}{}{Python, Pandas, DBSCAN, Streamlit}
-{\small Applied DBSCAN clustering to a geospatial traffic accident dataset for Frankfurt am Main to identify and rank high-risk zones.
-Visualized results using Streamlit and Contextily for stakeholder reporting.}
+{\small Applied DBSCAN clustering to 2.4M geolocated injury accidents across Germany (2016--2025) to identify and rank high-risk zones in any of its 401 districts.
+Built a public Streamlit dashboard with a district picker, outlier filtering and per-district parameter tuning by binary search.}
+}{}
+
+\iftoggle{proj-agentic}{
+\projdivider
+
+\cvevent{\href{https://github.com/HumbleHominid/agentic-connections}{Agentic Connections}}{}{}{}{Python, Anthropic API, pytest}
+{\small Red-teaming A/B experiment on a tool-use LLM agent that plays NYT Connections and reports its own results, checked against the game engine's ground truth. 300 pre-registered runs across two Claude models, analyzed with Fisher's exact tests; offline test suite against a fake API client.}
 }{}
 
 \iftoggle{proj-arcadia}{
